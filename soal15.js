@@ -3,10 +3,10 @@ function f(num) {
   let invertedTriangle = "";
 
   for(let i = num; i > 0; i--) {
-    for(let k = 0; k <= num - i; k ++){
+    for(let j = 0; j <= num - i; j ++){
       invertedTriangle += " ";
     }
-    for(let j = 0; j < i ; j++) {
+    for(let k = 0; k < i ; k++) {
       invertedTriangle += "* ";
     } 
     invertedTriangle += "\n";
