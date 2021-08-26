@@ -3,12 +3,16 @@ const Schema = mongoose.Schema;
 
 const nilaiSchema = new Schema(
   {
-    siswaId: {
-      type: mongoose.Schema.Types.ObjectId,
+    noIndukSiswa: {
+      type: String,
+      ref: "DataSiswa",
+    },
+    namaSiswa: {
+      type: String,
       ref: "DataSiswa"
     },
-    namaPelajaran: {
-      type: mongoose.Schema.Types.ObjectId,
+    mataPelajaran: {
+      type: String,
       ref: "DataGuru"
     },
     nilaiSiswa: {

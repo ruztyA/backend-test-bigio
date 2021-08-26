@@ -6,8 +6,9 @@ const server = express();
 const port = process.env.PORT || 3000;
 require("./database/config")();
 
-// const activitiesRoute = require('./routes/activityRoute');
 const registrationRoute = require('./routes/userRoute');
+const inputRoute = require("./routes/inputDataRoute");
+const nilaiRoute = require("./routes/nilaiSiswaRoute")
 
 server.use(logger("dev"));
 server.use(express.json());
@@ -16,9 +17,10 @@ server.use(express.urlencoded({ extended: false }));
 server.get("/", (req, res) => {
   res.send("Data Nilai Siswa");
 });
-
-// server.use('/api', activitiesRoute);
+  
 server.use('/api', registrationRoute);
+server.use('/api', inputRoute);
+server.use('/api', nilaiRoute);
 
 server.all("*", (req, res) => {
   res.status(404).json({

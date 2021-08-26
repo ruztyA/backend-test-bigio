@@ -14,10 +14,6 @@ const dataGuruSchema = new Schema(
     mataPelajaran: {
       type: String,
       required: true,
-    },
-    kelas: {
-      type: String,
-      required: true,
     }
   }, 
   { timestamps: true }
