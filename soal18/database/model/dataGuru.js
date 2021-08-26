@@ -7,6 +7,10 @@ const dataGuruSchema = new Schema(
       type: String,
       required: true,
     },
+    noIndukGuru: {
+      type: String,
+      required: true,
+    },
     mataPelajaran: {
       type: String,
       required: true,

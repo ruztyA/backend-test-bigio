@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 require("./database/config")();
 
 // const activitiesRoute = require('./routes/activityRoute');
-// const registrationRoute = require('./routes/registerRoute');
+const registrationRoute = require('./routes/userRoute');
 
 server.use(logger("dev"));
 server.use(express.json());
@@ -18,7 +18,7 @@ server.get("/", (req, res) => {
 });
 
 // server.use('/api', activitiesRoute);
-// server.use('/api/signin', registrationRoute);
+server.use('/api', registrationRoute);
 
 server.all("*", (req, res) => {
   res.status(404).json({

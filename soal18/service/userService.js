@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 exports.register = async (data) => {
   const newUser = await new User({
     username: data.username,
-    password: data.password,
+    password: bcrypt.hashSync(data.password, 10),
     role: data.role,
     nama: data.nama
   })

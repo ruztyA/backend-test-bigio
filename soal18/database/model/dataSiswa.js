@@ -8,6 +8,10 @@ const dataSiswaSchema = new Schema(
       required: true,
       unique: true
     },
+    noIndukSiswa: {
+      type: String,
+      required: true,
+    },
     kelas: {
       type: String,
       required: true,
