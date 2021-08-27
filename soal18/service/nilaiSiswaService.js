@@ -1,26 +1,26 @@
 const NilaiSiswa = require("../database/model/nilaiSiswa")
-const dataSiswa = require("../database/model/dataSiswa");
-const dataGuru = require("../database/model/dataGuru");
+const DataSiswa = require("../database/model/dataSiswa");
+const DataGuru = require("../database/model/dataGuru");
 
-exports.create = async (payload, data_siswa, data_guru) => {
+exports.create = async (nilai, data_siswa, data_guru) => {
   const data = await new NilaiSiswa({
     noIndukSiswa: data_siswa.noIndukSiswa,
     namaSiswa: data_siswa.namaSiswa,
-    namaPelajaran: data_guru.namaPelajaran,
-    nilaiSiswa: payload.nilai
+    mataPelajaran: data_guru.mataPelajaran,
+    nilaiSiswa: nilai
   });
   data.save(data);
   return data;
 }
 
 exports.findDataSiswa = async (payload) => {
-  const data = await dataSiswa.findOne({ noIndukSiswa: payload.no_induk_siswa }).exec();
+  const data = await DataSiswa.findOne({ noIndukSiswa: payload }).exec();
   console.log("🦄 ~ file: nilaiSiswaService.js ~ line 18 ~ exports.findDataSiswa= ~ data", data)
   return data;
 }
 
 exports.findDataGuru = async (payload) => {
-  const data = await dataGuru.findOne({ mataPelajaran: payload.mata_pelajaran }).exec();
+  const data = await DataGuru.findOne({ mataPelajaran: payload }).exec();
   console.log("🦄 ~ file: nilaiSiswaService.js ~ line 24 ~ exports.findDataGuru= ~ data", data)
   return data;
 }
@@ -31,7 +31,7 @@ exports.getNilai = async (payload) => {
 }
 
 exports.getNilaiBySiswa = async (payload) => {
-  const data = await NilaiSiswa.find({ noIndukSiswa: payload.no_induk_siswa }).exec();
+  const data = await NilaiSiswa.find({ noIndukSiswa: payload }, "noIndukSiswa namaSiswa mataPelajaran nilaiSiswa").exec();
   return data;
 }
 
