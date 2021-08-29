@@ -57,23 +57,17 @@ linked_list.addNodeAt(0, 1);
 console.log(linked_list);
 
 const hasCycle = (linkedlist) => {
-  let slow = this.head;
-  console.log("🦄 ~ file: soal19.js ~ line 61 ~ hasCycle ~ slow", slow)
-  let fast = this.head;
-  console.log("🦄 ~ file: soal19.js ~ line 63 ~ hasCycle ~ fast", fast)
+  let slow = linkedlist.head;
+  let fast = linkedlist.head;
   
   while(fast && fast.next){
-      // fast moves by two
       fast = fast.next.next
-      // slow moves by one
       slow = slow.next
-      // two pointers meet, cycle
       if(fast === slow){
-          return true
+        return 1
       }
   }
-  
-  return false
+  return 0
 }
 
 console.log(hasCycle(linked_list));
