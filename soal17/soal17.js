@@ -11,8 +11,7 @@ Tabel:
 - Pelanggan (id, nama, no. telephone)
 - Barang (id barang, harga satuan barang)
 - Shift (id, shift("pagi", "sore", "malam"))
-- Hari kerja (id, nama_hari)
-- Pekerja (nama, hari_kerja_id, shift_id, toko_id)
+- Pekerja (nama, shift_id, toko_id)
 
 */
 

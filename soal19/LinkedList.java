@@ -2,94 +2,71 @@ package soal19;
 
 import java.util.*;
 
-class LinkedList {
-  static Node head;
+public class LinkedList {
 
-  static class Node {
-    int value;
-    Node next;
-    Node(int d) {
-      value = d;
-      next = null;
-    }
-  }
+	static Node head; 
 
-  public void push(int new_data) {
-    Node new_node = new Node(new_data);
-    new_node.next = head;
-    head = new_node;
-  }
+	static class Node {
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data = d;
+			next = null;
+		}
+	}
 
-  public boolean checkLoop() {
-    Node first = head;
-    Node second = head;
+	static public void push(int new_data)
+	{
+		Node new_node = new Node(new_data);
+		new_node.next = head;
+		head = new_node;
+	}
+	static boolean detectLoop(Node h)
+	{
+		HashSet<Node> s = new HashSet<Node>();
+		while (h != null) {
+			if (s.contains(h))
+				return true;
 
-    while(first != null && first.next != null) {
-      first = first.next.next;
-      second = second.next;
+			s.add(h);
 
-      if(first == second) {
-        return true;
-      }
-    }
-    return false;
-  }
- 
-  public static void main(String[] args) {
-    LinkedList linkedList = new LinkedList();
+			h = h.next;
+		}
+
+		return false;
+	}
+
+	public static void main(String[] args)
+	{
+		LinkedList llist = new LinkedList();
 
     Scanner scan = new Scanner(System.in);
-    System.out.println("Enter the number of element: ");
+    System.out.println("Enter the number of element: (4) ");
     int number = scan.nextInt();
     
     while(number > 0) {
-      linkedList.push(scan.nextInt());
+      llist.push(scan.nextInt());
       number--;
     }
     scan.close();
-    System.out.println();
+    
+		llist.head.next.next.next.next = llist.head;
 
-    System.out.print("Linkedlist: ");
-    int i = 1;
-    while (i <= number) {
-      System.out.print(linkedList.head.value + " ");
-      linkedList.head = linkedList.head.next;
-      i++;
-    }
-
-    if(detectLoop(linkedList.head))
-      System.out.println("\n1");
-    else
-      System.out.println("\n0");
-
-    // boolean loop = linkedList.checkLoop();
-    // if(loop) {
-    //   System.out.println("\n loop found");
-    // } else {
-    //   System.out.println("\n no loop");
-    // }
-  }
-
-  static boolean detectLoop(Node first) {
-    System.out.println("\n" + first.next.value);
-
-    if(first == null)
-    return false;
-
-    Node slow, fast;
-    slow = fast = first;
-    while(true) {
-      slow = slow.next;
-      if(fast.next != null)
-      fast = fast.next.next;
-      else
-      return false;
-
-      if(slow == null || fast == null)
-      return false;
-
-      if(slow == fast)
-      return true;
-    }
-  }
+		if (detectLoop(head))
+			System.out.println("1");
+		else
+			System.out.println("0");
+	}
 }
+
+/*
+Sample input:
+Enter the number of element: (4) 
+4
+1 2 3 1
+
+Sample output:
+1
+*/
+

@@ -15,18 +15,16 @@ exports.create = async (nilai, data_siswa, data_guru) => {
 
 exports.findDataSiswa = async (payload) => {
   const data = await DataSiswa.findOne({ noIndukSiswa: payload }).exec();
-  console.log("🦄 ~ file: nilaiSiswaService.js ~ line 18 ~ exports.findDataSiswa= ~ data", data)
   return data;
 }
 
 exports.findDataGuru = async (payload) => {
   const data = await DataGuru.findOne({ mataPelajaran: payload }).exec();
-  console.log("🦄 ~ file: nilaiSiswaService.js ~ line 24 ~ exports.findDataGuru= ~ data", data)
   return data;
 }
 
-exports.getNilai = async (payload) => {
-  const data = await NilaiSiswa.find({});
+exports.getNilai = async () => {
+  const data = await NilaiSiswa.find({}, "noIndukSiswa namaSiswa mataPelajaran nilaiSiswa");
   return data;
 }
 
@@ -36,7 +34,7 @@ exports.getNilaiBySiswa = async (payload) => {
 }
 
 exports.getNilaiByPelajaran = async (payload) => {
-  const data = await NilaiSiswa.find({ mataPelajaran: payload.mata_pelajaran }).exec();
+  const data = await NilaiSiswa.find({ mataPelajaran: payload }, "noIndukSiswa namaSiswa mataPelajaran nilaiSiswa").exec();
   return data;
 }
 

@@ -3,9 +3,7 @@ const nilaiSiswaService = require("../service/nilaiSiswaService");
 exports.createNilai = async (req, res) => {
   try {
     const findSiswa = await nilaiSiswaService.findDataSiswa(req.body.no_induk_siswa);
-    console.log("🦄 ~ file: nilaiSiswaController.js ~ line 6 ~ exports.createNilai= ~ findSiswa", findSiswa)
     const findPelajaran = await nilaiSiswaService.findDataGuru(req.body.mata_pelajaran);
-    console.log("🦄 ~ file: nilaiSiswaController.js ~ line 8 ~ exports.createNilai= ~ findPelajaran", findPelajaran)
     if(!findSiswa || !findPelajaran) {
       res.status(400).json({
         statusText: "Bad Request",

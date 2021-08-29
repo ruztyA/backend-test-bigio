@@ -13,8 +13,8 @@ exports.createDataGuru = async (payload) => {
   return newData;
 }
 
-exports.getDataGuru = async (payload) => {
-  const data = await DataGuru.find({});
+exports.getDataGuru = async () => {
+  const data = await DataGuru.find({}, "namaGuru noIndukGuru mataPelajaran");
   return data;
 }
 
@@ -38,8 +38,8 @@ exports.deleteDataGuru = async (payload) => {
   return data;
 }
 
-exports.getDataSiswa = async (payload) => {
-  const data = await DataSiswa.find({});
+exports.getDataSiswa = async () => {
+  const data = await DataSiswa.find({}, "namaSiswa noIndukSiswa kelas");
   return data;
 }
 

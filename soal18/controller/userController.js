@@ -35,7 +35,6 @@ exports.login = async (req, res) => {
       });
     } else {
       const token = await userService.login(req.body.password, findUser);
-      console.log("🦄 ~ file: userController.js ~ line 38 ~ exports.login= ~ token", token)
       if(token == "Error"){
         res.status(400).json({
           statusText: "Bad Request",
@@ -50,7 +49,6 @@ exports.login = async (req, res) => {
       }
     }
   } catch (error) {
-    console.log("🦄 ~ file: userController.js ~ line 54 ~ exports.login= ~ error", error)
     res.status(500).json({
       message: "Internal Server Error",
       data: error.message

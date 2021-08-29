@@ -1,4 +1,3 @@
-const DataGuru = require("../database/model/dataGuru");
 const inputDataService = require("../service/inputDataService");
 
 exports.insertDataGuru = async (req, res) => {
